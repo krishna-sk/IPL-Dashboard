@@ -1,9 +1,12 @@
 package com.ipl.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +31,9 @@ public class Team {
 	private long totalMatches;
 
 	private long totalWins;
+	
+	@Transient
+	private List<Match> latestMatches;
 
 	public Team(String teamName, Long totalMatches) {
 		this.teamName = teamName;
