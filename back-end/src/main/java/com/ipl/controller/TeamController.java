@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,5 +40,10 @@ public class TeamController {
 		LocalDate startDate = LocalDate.of(year, 1, 1);
 		LocalDate endDate = LocalDate.of(year + 1, 1, 1);
 		return matchRepository.getMatchesByTeamBetweenDates(teamName, startDate, endDate);
+	}
+
+	@GetMapping("/all")
+	public List<Team> getAllTeams() {
+		return teamRepository.findAll(Sort.by(Sort.Direction.DESC, "totalWins"));
 	}
 }

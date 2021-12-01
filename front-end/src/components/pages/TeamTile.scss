@@ -1,0 +1,25 @@
+.TeamTile {
+    height: 170px;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: rgb(15, 9, 48);
+
+    .heading{
+        text-align: center;
+    }
+
+    .data{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .total-matches{
+        color: rgb(146, 125, 125);
+    }
+    
+    .total-wins{
+        color: green;
+    }
+}

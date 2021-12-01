@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { MatchDetailCard } from "./MatchDetailCard";
 import { MatchSmallCard } from "./MatchSmallCard";
 import { PieChartCard } from "./PieChartCard";
+import { Link } from "react-router-dom";
 
 import "./TeamPage.scss";
 
@@ -30,11 +31,13 @@ export const TeamPage = () => {
       </div>
       <div className="win-loss-section">
         Wins / Losses
-        <PieChartCard Wins = {team.totalWins} Losses = {team.totalMatches-team.totalWins}/>
+        <PieChartCard
+          Wins={team.totalWins}
+          Losses={team.totalMatches - team.totalWins}
+        />
       </div>
-
       <div className="match-detail-section">
-        <h3>Latest Matches</h3>
+        <h2 style={{ marginBottom: "10px" }}>Latest Matches</h2>
         <MatchDetailCard
           teamName={team.teamName}
           match={team.latestMatches[0]}
@@ -44,7 +47,7 @@ export const TeamPage = () => {
         <MatchSmallCard teamName={team.teamName} match={match} />
       ))}
       <div className="more-link">
-        <a href="#">More ></a>
+      <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More ></Link>
       </div>
     </div>
   );
