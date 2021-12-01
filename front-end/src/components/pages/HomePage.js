@@ -8,7 +8,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     const fetchTeams = async () => {
-      const response = await fetch(`http://localhost:8080/ipl/all`);
+      const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/ipl/all`);
       const data = await response.json();
       setTeams(data);
     };

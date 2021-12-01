@@ -1,5 +1,5 @@
 import "./App.scss";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { TeamPage } from "./components/pages/TeamPage";
 import { MatchPage } from "./components/pages/MatchPage";
 import { HomePage } from "./components/pages/HomePage";
@@ -9,9 +9,12 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage/>} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/teams/:teamName" element={<TeamPage />} />
-          <Route path="/teams/:teamName/matches/:year" element={<MatchPage />} />
+          <Route
+            path="/teams/:teamName/matches/:year"
+            element={<MatchPage />}
+          />
         </Routes>
       </Router>
     </div>
