@@ -9,7 +9,12 @@ import "./TeamPage.scss";
 
 export const TeamPage = () => {
   const { teamName } = useParams();
-  const [team, setTeam] = useState({});
+  const [team, setTeam] = useState({
+    id: "",
+    teamName: "",
+    totalWins: "",
+    latestMatches: [],
+  });
   useEffect(() => {
     const fetchMatches = async () => {
       const response = await fetch(
@@ -39,15 +44,20 @@ export const TeamPage = () => {
       <div className="match-detail-section">
         <h2 style={{ marginBottom: "10px" }}>Latest Matches</h2>
         <MatchDetailCard
+          key={team.latestMatches[0].id}
           teamName={team.teamName}
           match={team.latestMatches[0]}
         />
       </div>
       {team.latestMatches.slice(1).map((match) => (
-        <MatchSmallCard teamName={team.teamName} match={match} />
+        <MatchSmallCard key={match.id} teamName={team.teamName} match={match} />
       ))}
       <div className="more-link">
-      <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More ></Link>
+        <Link
+          to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}
+        >
+          More >
+        </Link>
       </div>
     </div>
   );
